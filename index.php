@@ -12,7 +12,7 @@ require_once 'vendor/autoload.php';
 </head>
 <body>
 <?php
-$color = \Conkal\Color\Color::fromHex('#429c38'); ?>
+$color = \Conkal\Color\Color::fromHex('#990000'); ?>
 <div style="float:left;background-color:<?php
 echo $color; ?> ;width: 100px;height: 100px">
     <?php
@@ -51,9 +51,9 @@ foreach ($color->shades(3) as $key => $color) { ?>
 } ?>
 
 <div style="float:left;background-color:<?php
-echo \Conkal\Color\Color::fromHex('#429c38')->invert(); ?> ;width: 100px;height: 100px">
+echo \Conkal\Color\Color::fromHex('#ff0000')->invert(); ?> ;width: 100px;height: 100px">
     <?php
-    echo \Conkal\Color\Color::fromHex('#429c38')->invert(); ?>
+    echo \Conkal\Color\Color::fromHex('#ff0000')->invert(); ?>
 </div>
 
 </body>
