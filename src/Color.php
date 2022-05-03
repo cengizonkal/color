@@ -15,6 +15,11 @@ class Color
         $this->_blue = $blue;
     }
 
+    /**
+     * Create a new color from a hexadecimal string
+     * @param string $string The hexadecimal string #RRGGBB
+     * @return Color
+     */
     public static function fromHex($string)
     {
         $red = hexdec(substr($string, 1, 2));
@@ -23,26 +28,50 @@ class Color
         return new self($red, $green, $blue);
     }
 
+    /**
+     * Creates a new color from rgb values
+     * @param int $red
+     * @param int $green
+     * @param int $blue
+     * @return Color
+     */
     public static function fromRgb($red, $green, $blue)
     {
         return new self($red, $green, $blue);
     }
 
+    /**
+     * Returns the red decimal value of the color.
+     * @return mixed
+     */
     public function red()
     {
         return $this->_red;
     }
 
+    /**
+     * Returns the green decimal value of the color.
+     * @return mixed
+     */
     public function green()
     {
         return $this->_green;
     }
 
+    /**
+     * Returns the blue decimal value of the color.
+     * @return mixed
+     */
     public function blue()
     {
         return $this->_blue;
     }
 
+    /**
+     * Darken the color by a given percentage
+     * @param int $percent
+     * @return Color
+     */
     public function darken($percent = 10)
     {
         $red = $this->_red * (100 - $percent) / 100;
@@ -51,6 +80,11 @@ class Color
         return new self($red, $green, $blue);
     }
 
+    /**
+     * Lightens the color by a given percentage
+     * @param int $percent
+     * @return Color
+     */
     public function lighten($percent = 10)
     {
         $red = min($this->_red * (100 + $percent) / 100, 255);
@@ -60,12 +94,21 @@ class Color
         return new self($red, $green, $blue);
     }
 
+    /**
+     * Returns the hexadecimal string representation of the color
+     * @return string
+     */
     public function __toString()
     {
         return $this->hex();
     }
 
-    public function gradient($range)
+    /**
+     * Returns a shades of current color
+     * @param int $range
+     * @return Color[]
+     */
+    public function shades($range)
     {
         $step = 100 / $range;
         $gradient = [];
