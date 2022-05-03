@@ -105,6 +105,7 @@ class Color
 
     /**
      * Returns a shades of current color
+     * 0 index is the base color, +range is lighter, -range is darker
      * @param int $range
      * @return Color[]
      */

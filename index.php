@@ -46,6 +46,7 @@ foreach ($color->shades(3) as $key => $color) { ?>
         echo $key . '=>' . $color; ?>
     </div>
 
+
 <?php
 } ?>
 

@@ -21,7 +21,7 @@ $color = Color::fromHex('#ff0000')->lighten(10);
 // darken by 10%
 $color = Color::fromHex('#ff0000')->darken(10);
 ```
-### gradient
+### shades
 gives an array of colors
 ```php
 $colors = Color::fromHex('#ff0000')->shades(3);
