@@ -17,14 +17,14 @@ class Color
 
     /**
      * Create a new color from a hexadecimal string
-     * @param string $string The hexadecimal string #RRGGBB
+     * @param string $hexString The hexadecimal string #RRGGBB
      * @return Color
      */
-    public static function fromHex($string)
+    public static function fromHex($hexString)
     {
-        $red = hexdec(substr($string, 1, 2));
-        $green = hexdec(substr($string, 3, 2));
-        $blue = hexdec(substr($string, 5, 2));
+        $red = hexdec(substr($hexString, 1, 2));
+        $green = hexdec(substr($hexString, 3, 2));
+        $blue = hexdec(substr($hexString, 5, 2));
         return new self($red, $green, $blue);
     }
 
