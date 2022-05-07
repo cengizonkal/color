@@ -56,6 +56,9 @@ echo \Conkal\Color\Color::fromHex('#ff0000')->invert(); ?> ;width: 100px;height:
     echo \Conkal\Color\Color::fromHex('#ff0000')->invert(); ?>
 </div>
 
+<?php
+echo $color->green;
+?>
 </body>
 </html>
 

@@ -4,15 +4,15 @@ namespace Conkal\Color;
 
 class Color
 {
-    protected $_red;
-    protected $_green;
-    protected $_blue;
+    private $red;
+    private $green;
+    private $blue;
 
     public function __construct($red, $green, $blue)
     {
-        $this->_red = $red;
-        $this->_green = $green;
-        $this->_blue = $blue;
+        $this->red = $red;
+        $this->green = $green;
+        $this->blue = $blue;
     }
 
     /**
@@ -39,34 +39,6 @@ class Color
     {
         return new self($red, $green, $blue);
     }
-
-    /**
-     * Returns the red decimal value of the color.
-     * @return mixed
-     */
-    public function red()
-    {
-        return $this->_red;
-    }
-
-    /**
-     * Returns the green decimal value of the color.
-     * @return mixed
-     */
-    public function green()
-    {
-        return $this->_green;
-    }
-
-    /**
-     * Returns the blue decimal value of the color.
-     * @return mixed
-     */
-    public function blue()
-    {
-        return $this->_blue;
-    }
-
     /**
      * Darken the color by a given percentage
      * @param int $percent
@@ -74,9 +46,9 @@ class Color
      */
     public function darken($percent = 10)
     {
-        $red = $this->_red * (100 - $percent) / 100;
-        $green = $this->_green * (100 - $percent) / 100;
-        $blue = $this->_blue * (100 - $percent) / 100;
+        $red = $this->red * (100 - $percent) / 100;
+        $green = $this->green * (100 - $percent) / 100;
+        $blue = $this->blue * (100 - $percent) / 100;
         return new self($red, $green, $blue);
     }
 
@@ -87,9 +59,9 @@ class Color
      */
     public function lighten($percent = 10)
     {
-        $red = min($this->_red * (100 + $percent) / 100, 255);
-        $green = min($this->_green * (100 + $percent) / 100, 255);
-        $blue = min($this->_blue * (100 + $percent) / 100, 255);
+        $red = min($this->red * (100 + $percent) / 100, 255);
+        $green = min($this->green * (100 + $percent) / 100, 255);
+        $blue = min($this->blue * (100 + $percent) / 100, 255);
 
         return new self($red, $green, $blue);
     }
@@ -125,12 +97,28 @@ class Color
 
     public function hex()
     {
-        return sprintf('#%02x%02x%02x', $this->_red, $this->_green, $this->_blue);
+        return sprintf('#%02x%02x%02x', $this->red, $this->green, $this->blue);
     }
 
     public function invert()
     {
-        return new self(255 - $this->_red, 255 - $this->_green, 255 - $this->_blue);
+        return new self(255 - $this->red, 255 - $this->green, 255 - $this->blue);
+    }
+
+    public function __get($name)
+    {
+        if (isset($this->{$name})) {
+            return $this->{$name};
+        } else {
+            $trace = debug_backtrace();
+            trigger_error(
+                'Undefined property via __get(): ' . $name .
+                ' in ' . $trace[0]['file'] .
+                ' on line ' . $trace[0]['line'],
+                E_USER_NOTICE
+            );
+            return null;
+        }
     }
 
 }
